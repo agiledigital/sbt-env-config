@@ -9,18 +9,18 @@ object EnvConfigPlugin extends AutoPlugin {
   import EnvConfigSettings._
 
   object EnvConfigSettings {
-    val source        = settingKey[String]("Source .conf file.")
-    val dest          = settingKey[String]("Destination .conf file.")
-    val path          = settingKey[String]("Path in resolved .conf to write")
+    val envSource        = settingKey[String]("Source .conf file.")
+    val envDest          = settingKey[String]("Destination .conf file.")
+    val envPath          = settingKey[String]("Path in resolved .conf to write")
     val envConfigTask = TaskKey[Unit]("envConfigTask")
   }
 
   override lazy val projectSettings = Seq (
     // Default settings.
-    source := "environment-dev.conf",
-    dest   := "application-environment.conf",
-    path   := "",
-    envConfigTask <<= (source, dest, path) map configTask
+    envSource := "environment-dev.conf",
+    envDest   := "application-environment.conf",
+    envPath   := "",
+    envConfigTask <<= (envSource, envDest, envPath) map configTask
   )
 
   def configTask(source: String, dest: String, path: String) = {
