@@ -15,7 +15,7 @@ Add the following lines to your `build.sbt` file (the defaults aren't very usefu
 ```scala
 import au.com.agiledigital.EnvConfigPlugin._
 
-lazy val root = (project in file(".")).enablePlugins(sbtEnvConfigPlugin)
+lazy val root = (project in file(".")).enablePlugins(EnvConfigPlugin)
 
 EnvConfigSettings.envSource := "path/to/source/env.conf"
 
