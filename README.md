@@ -26,9 +26,10 @@ EnvConfigSettings.envSource := "path/to/source/env.conf"
 
 EnvConfigSettings.envDest   := "path/to/destination/env.conf"
 
+// An empty path is equivalent to writing out the entire file.
 EnvConfigSettings.envPath   := ""
 
-// This is how it hooks into your application.
+// This is how it hooks into your compile.
 compile in Compile := {
   EnvConfigSettings.envConfigTask.value
   println("Rewrote .conf files")
